@@ -6,7 +6,7 @@ var swig = require('swig');
 var MongoClient = require('mongodb').MongoClient;
 var url="mongodb://localhost:27017/users";
 var helmet = require('helmet');
-var port = 3000;
+var port = process.env.PORT || 3000;
 var cancel = require('./routes/cancel');
 var payments = require('./routes/payments');
 var cancelTicket= require('./routes/cancelTicket');
@@ -44,6 +44,11 @@ function isLoggedIn(req){
 app.get('/',(req,res)=>{
 console.log("got it");
   res.render('index.html',{message:""});
+});
+
+app.get('/404',(req,res)=>{
+console.log("404 it");
+  res.render('404.html',{message:""});
 });
 
 
@@ -84,7 +89,7 @@ app.post('/buslist',(req,res)=>{
       if(err)
               {
                 console.log(err);
-                res.render("404.html",{"message":"some internal error. kindly refresh"});
+                res.render("/404",{"message":"some internal error. kindly refresh"});
           }
         else {
           var users  = db.db('users');
@@ -126,7 +131,7 @@ app.post('/signup',function(req,res){
     MongoClient.connect(url,function(err,db){
 		if(err)
 						{
-              console.log(err);res.render("404.html",{"message":"some internal error. kindly refresh"});
+              console.log(err);res.render("/404",{"message":"some internal error. kindly refresh"});
         }
 
    else {
@@ -136,7 +141,7 @@ app.post('/signup',function(req,res){
 
      users.find({"uname":uname}).toArray(function(err,result){
 			if(err)
-							{console.log(err);res.render("404.html",{"message":"some internal error. kindly refresh"});}
+							{console.log(err);res.render("/404",{"message":"some internal error. kindly refresh"});}
 			else
 			{
 			if(result.length == 0)
@@ -162,7 +167,7 @@ app.post('/signup',function(req,res){
   MongoClient.connect(url,function(err,db){
       if(err)
   				{
-                console.log(err);res.render("404.html",{"message":"some internal error. kindly refresh"});
+                console.log(err);res.render("/404",{"message":"some internal error. kindly refresh"});
           }
       else {
 
