@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link href="css/signup.css" rel="stylesheet" type="text/css" media="all" />
+    <title>Sign Up</title>
+  </head>
+  <body>
+
+    <div class="container">
+
+        <form id="signup" action="/signup" method="post">
+
+             <p style="background-color:#FF0000;">{{message}}</p>
+
+             <div class="header">
+
+                <h3>Sign Up</h3>
+
+                <p>You want to fill out this form</p>
+
+             </div>
+
+            <div class="sep"></div>
+
+            <div class="inputs">
+
+
+                <input type="text" name="username" placeholder="username" />
+
+                <input type="email" name="email" placeholder="email" autofocus />
+
+                <input type="password"  name="password" placeholder="Password" />
+
+                <div class="checkboxy">
+                    <input name="cecky" id="checky" value="1" type="checkbox" /><label class="terms">I accept the terms of use</label>
+                </div>
+
+                <button id="submit" type="submit" >SIGN UP</button>
+            </div>
+
+        </form>
+
+    </div>
+
+  </body>
+</html>

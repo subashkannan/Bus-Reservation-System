@@ -1,0 +1,52 @@
+<div class="container">
+  <table class="responsive-table">
+    <caption>Avaible Buses Between {{Source}} and {{Destination}}</caption>
+    <thead>
+      <tr>
+        <th scope="col">Bus ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">dep_time</th>
+        <th scope="col">ariv_time</th>
+        <th scope="col">Source</th>
+        <th scope="col">Destination</th>
+        <th scope="col">Fare</th>
+        <th scope="col">AC/Non-AC</th>
+        <th scope="col">Sleeper</th>
+        <th scope="col">Book Now</th>
+
+      </tr>
+    </thead>
+
+    <tbody>
+      {% if data.length != 0 %}
+      {%for dat in data %}
+
+        <tr>
+
+      <td >{{dat.id}}</td>
+      <td>{{dat.name}}</td>
+      <td>{{dat.dp_time}}</td>
+      <td>{{dat.ar_time}}</td>
+      <td>{{dat.from}}</td>
+      <td>{{dat.to}}</td>
+      <td>{{dat.fare}}</td>
+      <td>{{dat.type}}</td>
+      <td>{{dat.Sleeper}}</td>
+      <td>
+        <form  action="/ticket" method="post">
+     <input type="hidden" id="custId" name="custId" value="hgd"/>
+     <button type="submit" class="use-ticket" name="button">Get Ticket</button>
+        </form>
+     </td>
+      </tr>
+    {% endfor %}
+      {% else  %}
+      <tr>
+  <td colspan="3">No user</td>
+ </tr>
+   {% endif %}
+    </tbody>
+  </table>
+  </div>
+
+
